@@ -8,19 +8,19 @@ const verifyGetAdd = (req, res, next) => {
   if (error) {
     const err_arr=error.details.map((obj)=>obj.message)
     const err_obj=new custom_error(http.BAD_REQUEST,"ValidationError","Validation failed for particular keys")
-    res.send({ code: err_obj.code, name: err_obj.name, message: err_obj.message, err_arr });
+    res.status(http.BAD_REQUEST).send({ code: err_obj.code, name: err_obj.name, message: err_obj.message, err_arr });
   } else next();
 };
 
 const verifySetAdd=(req,res,next)=>{
   const { id } = req.params;
-  const {pass,newadd}=req.body;
+  const {pass,newadd}=req.headers;
   const joi_scehma_VerifyAddress=joibase_scehma_VerifyAddress.fork(["newadd","pass"],(schema)=>schema.required())
-  const {error,value}=joi_scehma_VerifyAddress.validate({id,newadd,pass})
+  const {error,value}=joi_scehma_VerifyAddress.validate({id,pass,newadd})
   if (error) {
     const err_arr=error.details.map((obj)=>obj.message)
     const err_obj=new custom_error(http.BAD_REQUEST,"ValidationError","Validation failed for particular keys")
-    res.send({ code: err_obj.code, name: err_obj.name, message: err_obj.message, err_arr });
+    res.status(http.BAD_REQUEST).send({ code: err_obj.code, name: err_obj.name, message: err_obj.message, err_arr });
   } else next();
 }
 

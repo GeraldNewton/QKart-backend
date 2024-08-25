@@ -4,7 +4,7 @@ const http=require("http-status")
 
 
 const verifyCred = (val) => (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password } = (val == "signup")?req.body:req.headers;
   let joi_scehma_Verifycred = joibase_scehma_Verifycred;
   if (val == "signup")
     joi_scehma_Verifycred = joi_scehma_Verifycred.fork(["username"], (schema) =>
@@ -23,7 +23,7 @@ const verifyCred = (val) => (req, res, next) => {
     err = new custom_error(
       http.BAD_REQUEST,
       "InvaildUser",
-      "authentcation parameters invalid"
+      "authentication parameters invalid"
     );
   return res
     .status(err.code)

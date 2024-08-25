@@ -8,7 +8,7 @@ const http = require("http-status");
 
 const get_cart = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email } = req.headers;
     const cart = await get_cart_by_email(email);
     if (!cart || cart.cart_items.length == 0) {
       let obj = new custom_error(
@@ -54,7 +54,7 @@ const buy_cart = async (req, res) => {
   try {
     const { email, password } = req.body;
     const buy = await buy_cart_by_emailAndpassword(email, password);
-    res.send(buy);
+    res.status(http.OK).send(buy);
   } catch (e) {
     let error;
     if (e.name == "InvalidRequest") error = e;

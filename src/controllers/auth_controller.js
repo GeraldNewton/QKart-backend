@@ -1,4 +1,3 @@
-// const user_schema =require("../")
 const { generate_token } = require("../utility/token.js");
 const {
   create_user,
@@ -31,7 +30,7 @@ const signup =  async (req, res) => {
 
 const login =  async (req, res) => {
   try {
-      const { email, password } = req.body;
+      const { email, password } = req.headers;
       const user = await loginWithEmailAndPassword(email, password);
       const token = await generate_token(req.body.password);
       res.status(http.OK).send({ user,token }); 

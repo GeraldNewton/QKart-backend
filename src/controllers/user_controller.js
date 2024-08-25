@@ -25,7 +25,7 @@ const get_user_address = async (req, res) => {
 const set_user_address = async (req, res) => {
   try {
     const { id } = req.params;
-    const { newadd, pass } = req.body;
+    const { newadd, pass } = req.headers;
     const user = await set_user_add_by_id(id, newadd, pass);
     res.send({address:user});
   } catch (e) {

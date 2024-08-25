@@ -1,11 +1,9 @@
 const custom_error = require("../utility/custom_error.js");
 const http = require("http-status");
-const { EMAIL_REGEX } = require("../config/config.js");
-const validator = require("validator");
 const joibase_schema_Verifycart = require("../config/joibase_schema_Verifycart.js");
 
 const verifyGetCart = (req, res, next) => {
-  const { email } = req.body;
+  const { email } = req.headers;
   const { error, value } = joibase_schema_Verifycart.validate({ email });
   if (error) {
     const err_arr = error.details.map((obj) => obj.message);
@@ -51,4 +49,30 @@ const verifySetCart = (req, res, next) => {
   } else next();
 };
 
-module.exports = { verifyGetCart, verifySetCart };
+const verifyDeleteCart = (req, res, next) => {
+  const { email, id } = req.body;
+  joi_schema_Verifycart = joibase_schema_Verifycart.fork(
+    ["id"],
+    (schema) => schema.required());
+  const { error, value } = joi_schema_Verifycart.validate({
+    email,
+    id
+  });
+  if (error) {
+    const err_arr = error.details.map((obj) => obj.message);
+    const err = new custom_error(
+      http.BAD_REQUEST,
+      "InvalidRequest",
+      "Request parameters are invalid"
+    );
+    const err_obj = {
+      code: err.code,
+      name: err.name,
+      message: err.message,
+      err_arr,
+    };
+    res.status(err_obj.code).send(err_obj);
+  } else next();
+};
+
+module.exports = { verifyGetCart, verifySetCart,verifyDeleteCart };
