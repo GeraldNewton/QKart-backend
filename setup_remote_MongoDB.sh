@@ -1,0 +1,1 @@
+mongoimport --uri "mongodb://personal-projects-clust-shard-00-00.etkgm.mongodb.net:27017,personal-projects-clust-shard-00-01.etkgm.mongodb.net:27017,personal-projects-clust-shard-00-02.etkgm.mongodb.net:27017/?replicaSet=atlas-40ac2e-shard-0" --ssl --authenticationDatabase admin --username arpit --password arpit@21112001 -d qkart -c products --file ./src/data/products.json

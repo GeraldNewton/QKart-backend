@@ -9,5 +9,5 @@ mongoose.connect(MONGODB_URL).then(async()=>await user_schema.init()).then(()=>{
         console.log(`server started on port ${PORT}`)
     })
 }).catch((e)=>{
-    console.log(`not able to connect due to the error ${e}`)
+    console.log(`not able to connect due to the error= ${e}`)
 })
