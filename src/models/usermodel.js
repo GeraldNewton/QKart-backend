@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 const validator=require("validator")
 const {DEFAULT_ADDRESS,DEFAULT_WALLET_MONEY,REGEX_MSG,EMAIL_MESSAGE,REGEX_USERPASS}=require("../config/config.js")
-const bcrypt=require("bcrypt")
+const bcrypt=require("bcryptjs")
 
 const user_schema=mongoose.Schema({
     username:{

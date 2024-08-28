@@ -3,7 +3,7 @@ const { product_model } = require("../models/productmodel.js");
 const custom_error = require("../utility/custom_error.js");
 const http = require("http-status");
 const user_model = require("../models/usermodel.js");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const order_model = require("../models/ordermodel.js");
 
 const get_cart_by_email = async (email) => {
