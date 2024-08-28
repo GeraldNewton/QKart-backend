@@ -1,7 +1,0 @@
-for local Run:-
-execute setup.sh
-use MONGODB_URL_ORG in place of MONGODB_URL in index.js
-
-for deployment run:-
-execute setup_remote_MongoDB.sh 
-use MONGODB_URL in place of MONGODB_URL_ORG in index.js
