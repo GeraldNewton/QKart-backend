@@ -3,7 +3,7 @@ execute setup.sh
 use MONGODB_URL_ORG in place of MONGODB_URL in index.js
 set 
 "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
 },
 in package.json
 
@@ -12,7 +12,7 @@ execute setup_remote_MongoDB.sh
 use MONGODB_URL in place of MONGODB_URL_ORG in index.js
 set 
 "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
 },
 in package.json
 

@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-const { MONGODB_URL, PORT } = require("./src/config/config.js");
+const { MONGODB_URL, PORT, MONGODB_URL_ORG } = require("./src/config/config.js");
 const app=require("./app.js");
 const user_schema = require("./src/models/usermodel.js");
 

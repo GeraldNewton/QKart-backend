@@ -19,5 +19,6 @@ module.exports={
     PRODUCT_CATEGORIES:process.env.PRODUCT_CATEGORIES.split(","),
     EMAIL_REGEX:new RegExp(process.env.EMAIL_REGEX),
     MOGOID_REGEX:new RegExp(process.env.MOGOID_REGEX),
-    MOGOID_REGEX_MSG:"incorrect id"
+    MOGOID_REGEX_MSG:"incorrect id",
+    MONGODB_URL_ORG:process.env.MONGODB_URL_ORG,
 }
